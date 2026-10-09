@@ -181,6 +181,34 @@ for (const path of pages) {
   await context.close();
 }
 
+// --- Favicon: fetchable in production, and declared via <link> on every page ---
+{
+  const faviconFiles = ["favicon.ico", "favicon-32x32.png", "favicon-16x16.png", "apple-touch-icon.png"];
+  for (const file of faviconFiles) {
+    const res = await fetch(baseUrl + "/" + file).catch(() => null);
+    check(`${file}: fetchable (HTTP 200)`, !!res && res.status === 200);
+  }
+
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  for (const path of pages) {
+    const page = await context.newPage();
+    await page.goto(baseUrl + path, { waitUntil: "load", timeout: 30000 });
+    const iconLinks = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]')).map((el) => ({
+        rel: el.getAttribute("rel"),
+        href: el.getAttribute("href"),
+        sizes: el.getAttribute("sizes"),
+      }))
+    );
+    check(`${path}: declares favicon.ico (any size)`, iconLinks.some((l) => l.href?.endsWith("favicon.ico")));
+    check(`${path}: declares favicon-32x32.png`, iconLinks.some((l) => l.href?.endsWith("favicon-32x32.png")));
+    check(`${path}: declares favicon-16x16.png`, iconLinks.some((l) => l.href?.endsWith("favicon-16x16.png")));
+    check(`${path}: declares apple-touch-icon.png`, iconLinks.some((l) => l.rel === "apple-touch-icon"));
+    await page.close();
+  }
+  await context.close();
+}
+
 await browser.close();
 
 console.log(`\n${failures === 0 ? "PASS" : "FAIL"} — ${failures} failing check(s)`);

@@ -128,16 +128,12 @@ a:not(.button) {
 }
 
 .site-logo {
-  display: inline-flex;
-  align-items: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
   text-decoration: none;
-  flex-shrink: 0;
-}
-
-.site-logo__image {
-  display: block;
-  height: 2.25rem;
-  width: auto;
+  white-space: nowrap;
 }
 
 .nav-toggle {
