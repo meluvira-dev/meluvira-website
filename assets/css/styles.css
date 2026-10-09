@@ -128,12 +128,16 @@ a:not(.button) {
 }
 
 .site-logo {
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: 0.02em;
-  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.site-logo__image {
+  display: block;
+  height: 2.25rem;
+  width: auto;
 }
 
 .nav-toggle {
@@ -545,24 +549,6 @@ section + section {
 /* ---------------------------------------------------------------- */
 /* App screenshots — real captures from the Simulator, never mockups */
 /* ---------------------------------------------------------------- */
-
-.hero--with-shot {
-  display: grid;
-  gap: var(--space-4);
-  align-items: center;
-}
-
-@media (min-width: 48rem) {
-  .hero--with-shot {
-    grid-template-columns: 1.1fr 0.9fr;
-  }
-}
-
-.hero__shot {
-  justify-self: center;
-  width: 100%;
-  max-width: 17rem;
-}
 
 .app-shot {
   display: block;
