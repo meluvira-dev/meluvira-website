@@ -1,0 +1,588 @@
+/* MELUVIRA — shared stylesheet
+   Clean, quiet, minimal, product-focused. One stylesheet, no framework. */
+
+:root {
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f3f6;
+  --color-text: #1c2430;
+  --color-text-muted: #55606e;
+  --color-border: #e2e5ea;
+  --color-accent: #3457d5;
+  --color-accent-contrast: #ffffff;
+  --color-focus: #1746c9;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", "Segoe UI", Roboto, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+
+  --max-width: 72rem;
+  --max-width-text: 42rem;
+
+  --radius: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #15181d;
+    --color-surface: #1c2027;
+    --color-surface-muted: #20242c;
+    --color-text: #eef0f3;
+    --color-text-muted: #a7b0bd;
+    --color-border: #2c313b;
+    --color-accent: #6b8bff;
+    --color-accent-contrast: #0f1115;
+    --color-focus: #9db2ff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:not(.button) {
+  text-underline-offset: 0.2em;
+}
+
+/* Visible, consistent focus state everywhere — never removed, only restyled. */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -3rem;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 0 0 8px 8px;
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Header / navigation                                               */
+/* ---------------------------------------------------------------- */
+
+.site-header {
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-2);
+  gap: var(--space-2);
+}
+
+.site-logo {
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.nav-toggle__icon,
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+}
+
+.nav-toggle__icon {
+  position: relative;
+}
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle__icon::before {
+  top: -6px;
+}
+
+.nav-toggle__icon::after {
+  top: 6px;
+}
+
+/* Mobile: the nav is a dropdown panel anchored to the header, not part of
+   the bar's own row flow — this is what lets the logo+toggle row stay a
+   single tidy line while the open menu overlays below it rather than
+   pushing page content down. */
+.site-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 8px 16px -12px rgb(0 0 0 / 0.2);
+}
+
+.site-nav.is-open {
+  display: block;
+}
+
+.site-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.site-nav__list a {
+  display: block;
+  padding: var(--space-2);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-nav__list a:hover {
+  background: var(--color-surface-muted);
+}
+
+.site-nav__list a[aria-current="page"] {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Desktop / tablet-wide: nav becomes a normal inline row, hamburger hidden.
+   Chosen deliberately wide (60rem / 960px) so the collapsed menu stays in
+   use through 768px tablet width, which is exactly the breakpoint the Wix
+   reference site's navigation broke at. */
+@media (min-width: 60rem) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    position: static;
+    background: transparent;
+    border-bottom: 0;
+    box-shadow: none;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    padding: 0;
+    gap: var(--space-3);
+  }
+
+  .site-nav__list a {
+    padding: var(--space-1) 0.25rem;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Hero                                                               */
+/* ---------------------------------------------------------------- */
+
+.hero {
+  background: linear-gradient(135deg, var(--color-surface-muted), var(--color-bg) 70%);
+  padding-block: var(--space-5) var(--space-6);
+}
+
+.hero__eyebrow {
+  margin: 0 0 var(--space-1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.hero h1 {
+  margin: 0 0 var(--space-2);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  line-height: 1.25;
+  max-width: 24ch;
+}
+
+.hero p {
+  max-width: var(--max-width-text);
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Buttons / links                                                   */
+/* ---------------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.button:hover {
+  opacity: 0.92;
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/* ---------------------------------------------------------------- */
+/* Sections                                                           */
+/* ---------------------------------------------------------------- */
+
+section {
+  padding-block: var(--space-5);
+}
+
+section + section {
+  border-top: 1px solid var(--color-border);
+}
+
+.section-heading {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+}
+
+.section-intro {
+  max-width: var(--max-width-text);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+/* ---------------------------------------------------------------- */
+/* Feature / step list — numbers stay structurally inside each item  */
+/* ---------------------------------------------------------------- */
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .feature-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 60rem) {
+  .feature-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.feature-list__item {
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.feature-list__index {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.feature-list__item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+}
+
+.feature-list__item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Privacy-style 2-column numbered principle list (same grouping rule) */
+.principle-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .principle-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.principle-list__item {
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.principle-list__index {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.principle-list__item h2,
+.principle-list__item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+}
+
+.principle-list__item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Data-management card (quiet gradient panel, Wix "データ管理" section) */
+/* ---------------------------------------------------------------- */
+
+.panel {
+  background: linear-gradient(135deg, var(--color-surface-muted), var(--color-bg));
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.panel__groups {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 40rem) {
+  .panel__groups {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.panel__group h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.panel__group p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Link cards (Home -> Support / Privacy)                             */
+/* ---------------------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+
+.card .button {
+  align-self: flex-start;
+}
+
+/* ---------------------------------------------------------------- */
+/* Disclaimer / closing note (dark quiet band, Wix "サポートと大切なこと") */
+/* ---------------------------------------------------------------- */
+
+.note {
+  background: var(--color-surface-muted);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.note h2 {
+  margin-top: 0;
+}
+
+.note p {
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------------- */
+/* Simple content section (Privacy page) */
+/* ---------------------------------------------------------------- */
+
+.content-section + .content-section {
+  margin-top: var(--space-4);
+}
+
+.content-section h2 {
+  font-size: 1.1875rem;
+  margin: 0 0 var(--space-1);
+}
+
+.content-section p {
+  margin: 0;
+  color: var(--color-text-muted);
+  max-width: var(--max-width-text);
+}
+
+/* ---------------------------------------------------------------- */
+/* Footer                                                             */
+/* ---------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.site-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------- */
+/* Utility                                                            */
+/* ---------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

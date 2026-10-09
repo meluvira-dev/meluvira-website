@@ -1,0 +1,13 @@
+{
+  "name": "meluvira-website",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MELUVIRA public website prototype (static HTML/CSS/JS) for GitHub Pages.",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "qa": "node qa/check.mjs http://localhost:4173"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>サポート — MELUVIRA</title>
+  <meta name="description" content="Medication Logの主な機能、データ管理、Subscription / Premiumについてのサポート情報。">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-logo" href="/">MELUVIRA</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden">メニューを開く</span>
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="サイト">
+        <ul class="site-nav__list">
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/support/" aria-current="page">サポート</a></li>
+          <li><a href="/privacy/">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="hero__eyebrow">サポート</p>
+        <h1>主な機能</h1>
+        <p>Medication Logの主な機能をまとめています。予定、記録、履歴、Backupなどをシンプルに確認できます。</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="features-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="features-heading">主な機能の一覧</h2>
+        <!--
+          Structural grouping fix for the Wix "01/02/03/04 orphaned at
+          breakpoint" bug: the number, the item name, and its description
+          all live inside ONE <li>, inside a single <ol>. There is no
+          separately-positioned decorative number element, so there is
+          nothing that can drift apart from its matching content at any
+          breakpoint.
+        -->
+        <ol class="feature-list">
+          <li class="feature-list__item">
+            <span class="feature-list__index" aria-hidden="true">01</span>
+            <h3>Medication登録</h3>
+            <p>Medicationを登録して利用を開始できます。MELUVIRA独自の外部アカウントやTrackingは必要ありません。</p>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__index" aria-hidden="true">02</span>
+            <h3>Schedule</h3>
+            <p>Medicationごとに予定を設定できます。繰り返しの予定や単発の予定を登録できます。</p>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__index" aria-hidden="true">03</span>
+            <h3>Today</h3>
+            <p>今日の予定を確認し、「使用した」または「まだ」から記録できます。予定外の内容はQuick Recordから残せます。</p>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__index" aria-hidden="true">04</span>
+            <h3>Calendar / History</h3>
+            <p>過去の記録をCalendarやHistoryから振り返れます。CSV / JSON形式で書き出すこともできます。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="data-heading">
+      <div class="container">
+        <div class="panel">
+          <h2 class="section-heading" id="data-heading">データ管理</h2>
+          <p>Medication Logは、利用者自身がデータを管理できることを大切にしています。記録は基本的にデバイス上で管理されます。</p>
+          <div class="panel__groups">
+            <div class="panel__group">
+              <h3>BACKUP / RESTORE</h3>
+              <p>Backupを作成し、必要なときにRestoreできます。保存先は利用者自身で選択できます。</p>
+            </div>
+            <div class="panel__group">
+              <h3>EXPORT</h3>
+              <p>記録はCSV / JSON形式で書き出せます。CSVは閲覧・共有向け、JSONは完全なBackup用として利用できます。</p>
+            </div>
+            <div class="panel__group">
+              <h3>PRIVACY</h3>
+              <p>MELUVIRA独自の外部サーバーへMedicationの記録を保存する仕組みは使用していません。第三者のTracking SDKやAnalytics SDKも使用していません。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="premium-heading">
+      <div class="container">
+        <h2 class="section-heading" id="premium-heading">Subscription / Premium</h2>
+        <p class="section-intro">
+          FreeではActive Medicationを最大3件まで利用できます。PremiumではActive Medication数の上限が解除されます。
+          購入や復元はAppleのStoreKitを通じて行われます。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="disclaimer-heading">
+      <div class="container">
+        <div class="note">
+          <h2 id="disclaimer-heading">サポートと大切なこと</h2>
+          <p>
+            Medication Logは記録を補助するためのアプリです。診断、治療の判断、薬を使用すべきかどうかの判断、
+            用法・用量の決定などを行うものではありません。医療上の判断が必要な場合は、医師、薬剤師その他の適切な専門家へご相談ください。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__bar">
+      <p>© 2026 MELUVIRA. All rights reserved.</p>
+      <p><a href="/privacy/">法的情報</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

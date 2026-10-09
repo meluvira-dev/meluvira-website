@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MELUVIRA — Medication Log</title>
+  <meta name="description" content="MELUVIRAのMedication Log：毎日のMedicationの予定と記録を、シンプルに残すためのアプリです。">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-logo" href="/">MELUVIRA</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden">メニューを開く</span>
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="サイト">
+        <ul class="site-nav__list">
+          <li><a href="/" aria-current="page">ホーム</a></li>
+          <li><a href="/support/">サポート</a></li>
+          <li><a href="/privacy/">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>プライバシーを大切にしたMedication Log</h1>
+        <p>
+          毎日のMedicationの予定と記録を、シンプルに残すためのアプリです。
+          MELUVIRA独自のアカウント登録や外部Trackingを前提とせず、記録は基本的にデバイス上で管理します。
+        </p>
+        <p><a class="button" href="#privacy-principles">サポート・プライバシー</a></p>
+      </div>
+    </section>
+
+    <section aria-labelledby="privacy-principles-heading" id="privacy-principles">
+      <div class="container">
+        <h2 class="section-heading" id="privacy-principles-heading">プライバシーの考え方</h2>
+        <p class="section-intro">
+          毎日のMedicationの予定と記録を、シンプルに管理できます。記録は基本的にデバイス上で扱われ、
+          MELUVIRA独自の外部サーバーやTrackingを前提としません。必要な記録を、自分の手元で静かに続けられるように設計しています。
+        </p>
+
+        <ol class="principle-list">
+          <li class="principle-list__item">
+            <span class="principle-list__index" aria-hidden="true">01</span>
+            <h3>ローカル保存 — デバイス上で管理</h3>
+            <p>記録データは基本的にデバイス上で管理します。MELUVIRA独自の外部サーバーへMedication Logの記録を保存する仕組みは使用していません。</p>
+          </li>
+          <li class="principle-list__item">
+            <span class="principle-list__index" aria-hidden="true">02</span>
+            <h3>アカウント不要</h3>
+            <p>利用開始にMELUVIRA独自のアカウント登録は必要ありません。不要な個人情報を集めない設計を優先しています。</p>
+          </li>
+          <li class="principle-list__item">
+            <span class="principle-list__index" aria-hidden="true">03</span>
+            <h3>Trackingなし — 広告なし</h3>
+            <p>第三者の広告SDKやTracking、Analytics SDKを使用せず、利用状況を追跡することを前提にしていません。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="links-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="links-heading">サポートとプライバシー</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h2>サポート</h2>
+            <p>Medication Logの登録、通知、Premium、バックアップなどについてご案内します。</p>
+            <a class="button button--secondary" href="/support/">サポートを見る</a>
+          </div>
+          <div class="card">
+            <h2>プライバシー</h2>
+            <p>Medication Logでデータがどのように扱われるかをご案内します。ローカル保存を基本とし、TrackingやHealthKit連携を前提としません。</p>
+            <a class="button button--secondary" href="/privacy/">プライバシーポリシーを見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__bar">
+      <p>© 2026 MELUVIRA. All rights reserved.</p>
+      <p><a href="/privacy/">法的情報</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
