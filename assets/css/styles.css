@@ -543,6 +543,73 @@ section + section {
 }
 
 /* ---------------------------------------------------------------- */
+/* App screenshots — real captures from the Simulator, never mockups */
+/* ---------------------------------------------------------------- */
+
+.hero--with-shot {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+@media (min-width: 48rem) {
+  .hero--with-shot {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.hero__shot {
+  justify-self: center;
+  width: 100%;
+  max-width: 17rem;
+}
+
+.app-shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 303 / 660;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 32px -20px rgb(0 0 0 / 0.28);
+  background: var(--color-surface);
+}
+
+.shot-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 40rem) {
+  .shot-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.shot-grid figure {
+  margin: 0;
+}
+
+.shot-grid .app-shot {
+  max-width: 11rem;
+  margin-inline: auto;
+}
+
+.shot-grid figcaption {
+  margin-top: var(--space-1);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.feature-list__item .app-shot {
+  max-width: 9rem;
+  margin: 0 0 var(--space-2);
+}
+
+/* ---------------------------------------------------------------- */
 /* Footer                                                             */
 /* ---------------------------------------------------------------- */
 
